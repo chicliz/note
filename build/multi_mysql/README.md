@@ -11,16 +11,16 @@ docker run --name mysql_slave_2 -p 3308:3306 -e MYSQL_ROOT_PASSWORD=root -d mysq
 
 ## 获取主从ip
 
-master
-$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID
+master  
+$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID  
 $ 172.17.0.2
 
-slave
-$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID
+slave  
+$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID  
 $ 172.17.0.3
 
-slave
-$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID
+slave  
+$ docker inspect --format="{{.NetworkSettings.IPAddress}}" containerID  
 $ 172.17.0.4
 
 ## 配置master  
