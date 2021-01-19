@@ -10,7 +10,7 @@ type FIFO struct {
 	cond  sync.Cond
 	queue []int
 
-	exit  chan struct{}
+	exit chan struct{}
 }
 
 //pop函数调用地方较多, 适用于多个消费者的模型
@@ -49,9 +49,9 @@ func (f *FIFO) IsClosed() bool {
 }
 
 func (f *FIFO) Close() {
-	close(f.exit)
 	f.lock.Lock()
 	defer f.lock.Unlock()
+	close(f.exit)
 	f.cond.Broadcast()
 }
 
@@ -63,5 +63,3 @@ func NewFIFO() *FIFO {
 	f.exit = make(chan struct{})
 	return f
 }
-
-
